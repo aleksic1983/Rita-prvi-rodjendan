@@ -60,15 +60,25 @@ function fadeOutMusic() {
     const fadeInterval = setInterval(() => {
 
         if (backgroundMusic.volume > 0.02) {
-            backgroundMusic.volume -= 0.01;
-        } else {
-            clearInterval(fadeInterval);
-
-            backgroundMusic.pause();
-            backgroundMusic.currentTime = 0;
-            backgroundMusic.volume = 0.12;
+            backgroundMusic.volume = Math.max(
+                0,
+                backgroundMusic.volume - 0.01
+            );
         }
 
     }, 100);
+
+
+    setTimeout(() => {
+
+        clearInterval(fadeInterval);
+
+        backgroundMusic.pause();
+        backgroundMusic.currentTime = 0;
+
+        // Vraćamo početnu glasnoću za eventualno novo pokretanje
+        backgroundMusic.volume = 0.10;
+
+    }, 1000);
 
 }
