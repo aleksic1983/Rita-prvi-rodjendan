@@ -1,0 +1,1192 @@
+/* =========================
+   BOJE / PERSONALIZACIJA
+========================= */
+
+:root {
+    --color-primary: #e8b7bd;       /* puder-roza */
+    --color-secondary: #fff8ed;     /* krem */
+    --color-accent: #c9a45c;        /* zlatna */
+
+    --color-text: #594a47;           /* glavni tekst */
+    --color-text-light: #8a7470;     /* nježniji tekst */
+
+    --color-background: #f4d9dc;     /* pozadina iza slikovnice */
+    --color-white: #ffffff;
+
+    --font-main: "Cormorant Garamond", serif;
+    --font-special: "Parisienne", cursive;
+
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    font: inherit;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--color-background);
+
+    color: var(--color-text);
+
+    font-family: var(--font-main);
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   SLIKOVNICA
+========================= */
+
+.storybook {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   STRANICE
+========================= */
+
+.page {
+    position: absolute;
+
+    width: min(100%, 420px);
+    height: min(82vh, 680px);
+
+    padding: 35px 25px;
+
+    background: var(--color-secondary);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 40px rgba(89, 74, 71, 0.18),
+        0 0 0 1px rgba(201, 164, 92, 0.18);
+
+    display: none;
+
+    overflow: hidden;
+}
+
+
+/* Trenutno aktivna stranica */
+
+.page.active {
+    display: block;
+}
+
+
+/* =========================
+   SADRŽAJ STRANICE
+========================= */
+
+.page-content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/* =========================
+   NASLOVI
+========================= */
+
+h1 {
+    margin-bottom: 20px;
+
+    color: var(--color-accent);
+
+    font-size: clamp(2.4rem, 10vw, 3.5rem);
+    font-weight: normal;
+    line-height: 1.05;
+}
+
+h2 {
+    margin-bottom: 20px;
+
+    color: var(--color-text);
+
+    font-size: clamp(1.7rem, 7vw, 2.3rem);
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+
+/* =========================
+   TEKST
+========================= */
+
+p {
+    max-width: 320px;
+
+    font-size: 1rem;
+    line-height: 1.7;
+
+    color: var(--color-text-light);
+}
+
+.small-title {
+    margin-bottom: 15px;
+
+    color: var(--color-accent);
+
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.intro-text {
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   BROJ STRANICE
+========================= */
+
+.page-number {
+    position: absolute;
+
+    top: 22px;
+    right: 25px;
+
+    color: var(--color-accent);
+
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   FOTOGRAFIJA
+========================= */
+
+.photo-frame {
+    position: relative;
+
+    width: 190px;
+    aspect-ratio: 1 / 1;
+
+    margin: 10px 0 28px;
+
+    padding: 7px;
+
+    background: var(--color-secondary);
+
+    border: 1px solid var(--color-accent);
+    border-radius: 50%;
+
+    box-shadow:
+        0 8px 25px rgba(89, 74, 71, 0.12),
+        0 0 0 5px rgba(232, 183, 189, 0.25);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.photo-frame::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: -12px;
+    right: 8px;
+
+    color: var(--color-accent);
+
+    font-size: 1.2rem;
+}
+
+.photo-frame::after {
+    content: "♡";
+
+    position: absolute;
+
+    bottom: -10px;
+    left: 12px;
+
+    color: var(--color-primary);
+
+    font-size: 1.3rem;
+}
+
+/* =========================
+   365 DANA - STRANICA
+========================= */
+
+.days-number {
+    position: relative;
+
+    z-index: 1;
+
+    color: var(--color-accent);
+
+    font-size: clamp(5rem, 25vw, 8rem);
+    line-height: 0.9;
+
+    margin-bottom: 20px;
+}
+
+
+/* Dekorativni krug iza broja */
+
+.days-number::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(232, 183, 189, 0.22);
+
+    border-radius: 50%;
+
+    z-index: -1;
+}
+
+
+/* Mali ukrasi */
+
+.days-number::after {
+    content: "✦  ♡  ✦";
+
+    position: absolute;
+
+    width: 160px;
+
+    left: 50%;
+    bottom: -45px;
+
+    transform: translateX(-50%);
+
+    color: var(--color-accent);
+
+    font-size: 0.8rem;
+    letter-spacing: 8px;
+}
+
+
+/* =========================
+   PRVI ROĐENDAN - BROJ 1
+========================= */
+
+/* .birthday-number {
+    position: relative;
+
+    z-index: 1;
+
+    color: var(--color-accent);
+
+    font-size: clamp(8rem, 40vw, 13rem);
+    line-height: 0.8;
+
+    margin: 25px 0 35px;
+
+    text-shadow:
+        0 4px 15px rgba(201, 164, 92, 0.15);
+} */
+
+.birthday-number {
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 190px;
+    height: 190px;
+
+    color: var(--color-accent);
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 9rem;
+    font-weight: normal;
+    line-height: 1;
+
+    margin: 25px 0 35px;
+
+    text-shadow:
+        0 4px 15px rgba(201, 164, 92, 0.15);
+}
+
+/* Puder-rozi krug iza broja */
+
+.birthday-number::before {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    top: 55%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(232, 183, 189, 0.22);
+
+    border: 1px solid rgba(201, 164, 92, 0.25);
+
+    border-radius: 50%;
+
+    z-index: -1;
+}
+
+
+/* Zlatne zvjezdice */
+
+.birthday-number::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: -10px;
+    right: -25px;
+
+    color: var(--color-accent);
+
+    font-size: 1.1rem;
+
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+}
+
+
+/* =========================
+   DUGMAD
+========================= */
+
+.next-btn {
+    margin-top: 35px;
+
+    padding: 13px 28px;
+
+    border: 1px solid var(--color-accent);
+    border-radius: 50px;
+
+    background: transparent;
+
+    color: var(--color-accent);
+
+    font-size: 0.85rem;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   POZIVNICA
+========================= */
+
+.invitation-text {
+    margin-bottom: 30px;
+}
+
+.event-details {
+    width: 100%;
+    max-width: 300px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.detail {
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid rgba(201, 164, 92, 0.35);
+}
+
+.detail span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--color-accent);
+
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.detail strong {
+    color: var(--color-text);
+
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.final-message {
+    margin-top: 30px;
+
+    color: var(--color-accent);
+
+    font-style: italic;
+}
+
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 768px) {
+
+    .page {
+        height: min(85vh, 720px);
+
+        padding: 50px 40px;
+    }
+}
+
+/* =========================
+   KORICE SLIKOVNICE
+========================= */
+
+.cover-page {
+    background:
+        linear-gradient(
+            rgba(255, 248, 237, 0.94),
+            rgba(255, 248, 237, 0.94)
+        ),
+        var(--color-secondary);
+
+    border: 1px solid rgba(201, 164, 92, 0.35);
+}
+
+
+/* Unutrašnji dekorativni okvir */
+
+.cover-page::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 14px;
+
+    border: 1px solid rgba(201, 164, 92, 0.45);
+    border-radius: 12px;
+
+    pointer-events: none;
+}
+
+
+/* Mali zlatni detalj na vrhu */
+
+.cover-page::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: 38px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: var(--color-accent);
+
+    font-size: 1.2rem;
+}
+
+
+/* =========================
+   KORICE - SADRŽAJ
+========================= */
+
+.cover-page .page-content {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* Malo više prostora oko naslova */
+
+.cover-page h1 {
+    max-width: 320px;
+
+    margin-top: 10px;
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 2px 8px rgba(201, 164, 92, 0.08);
+}
+
+
+/* Dekorativna linija ispod naslova */
+
+.cover-page h1::after {
+    content: "";
+
+    display: block;
+
+    width: 70px;
+    height: 1px;
+
+    margin: 22px auto 0;
+
+    background: var(--color-accent);
+}
+
+
+/* Tekst na koricama */
+
+.cover-page .intro-text {
+    max-width: 280px;
+
+    font-style: italic;
+}
+
+
+/* =========================
+   DUGME NA KORICAMA
+========================= */
+
+.cover-page .next-btn {
+    position: relative;
+
+    min-width: 165px;
+
+    background: var(--color-accent);
+
+    color: var(--color-secondary);
+
+    border: none;
+
+    box-shadow:
+        0 8px 20px rgba(89, 74, 71, 0.12);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.cover-page .next-btn:active {
+    transform: scale(0.96);
+}
+
+/* =========================
+   PAGE TURN ANIMACIJA
+========================= */
+
+.page {
+    transform-origin: left center;
+
+    perspective: 1200px;
+
+    backface-visibility: hidden;
+}
+
+
+/* Stranica koja se okreće */
+
+.page.turning {
+    display: block;
+
+    animation: pageTurn 0.55s ease-in forwards;
+
+    z-index: 5;
+}
+
+
+/* Nova stranica koja se pojavljuje */
+
+.page.entering {
+    animation: pageEnter 0.6s ease-out;
+}
+
+
+/* =========================
+   ANIMACIJE
+========================= */
+
+@keyframes pageTurn {
+
+    0% {
+        transform:
+            perspective(1200px)
+            rotateY(0deg);
+
+        opacity: 1;
+
+        box-shadow:
+            0 15px 40px rgba(89, 74, 71, 0.18);
+    }
+
+    35% {
+        transform:
+            perspective(1200px)
+            rotateY(-25deg);
+
+        opacity: 1;
+
+        box-shadow:
+            15px 15px 35px rgba(89, 74, 71, 0.25);
+    }
+
+    70% {
+        transform:
+            perspective(1200px)
+            rotateY(-65deg);
+
+        opacity: 0.8;
+
+        box-shadow:
+            25px 10px 30px rgba(89, 74, 71, 0.3);
+    }
+
+    100% {
+        transform:
+            perspective(1200px)
+            rotateY(-95deg);
+
+        opacity: 0;
+
+        box-shadow:
+            30px 5px 20px rgba(89, 74, 71, 0);
+    }
+
+}
+
+
+@keyframes pageEnter {
+
+    0% {
+        opacity: 0;
+
+        transform: scale(0.97);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform: scale(1);
+    }
+
+}
+
+/* =========================
+   HRBAT SLIKOVNICE
+========================= */
+
+.page::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 10px;
+    height: 100%;
+
+    background: linear-gradient(
+        to right,
+        rgba(89, 74, 71, 0.14),
+        rgba(89, 74, 71, 0.04),
+        transparent
+    );
+
+    pointer-events: none;
+
+    z-index: 10;
+}
+
+
+/* =========================
+   SJENA PRI OKRETANJU
+========================= */
+
+.page.turning {
+    box-shadow:
+        -10px 15px 35px rgba(89, 74, 71, 0.12),
+        18px 15px 35px rgba(89, 74, 71, 0.28);
+
+    animation: pageTurn 0.55s ease-in forwards;
+}
+
+.rita-name {
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
+#page3 h2 {
+    margin-top: 30px;
+}
+
+
+
+#page4.entering .birthday-number {
+    animation: numberReveal 0.9s ease-out;
+}
+
+
+@keyframes numberReveal {
+
+    0% {
+        opacity: 0;
+        transform: translateY(25px) scale(0.85);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.03);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+/* =========================
+   ZAVRŠNA POZIVNICA
+========================= */
+
+.invitation-page {
+    background:
+        linear-gradient(
+            rgba(255, 248, 237, 0.96),
+            rgba(255, 248, 237, 0.96)
+        ),
+        var(--color-secondary);
+
+    border: 1px solid rgba(201, 164, 92, 0.35);
+}
+
+
+/* Unutrašnji zlatni okvir */
+
+.invitation-page::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 14px;
+
+    border: 1px solid rgba(201, 164, 92, 0.4);
+    border-radius: 12px;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+.invitation-page .page-content {
+    position: relative;
+
+    z-index: 1;
+}
+
+/* =========================
+   NASLOV POZIVNICE
+========================= */
+
+.invitation-page h2 {
+    position: relative;
+
+    margin-bottom: 28px;
+
+    color: var(--color-accent);
+
+    font-size: clamp(2rem, 8vw, 2.8rem);
+}
+
+
+.invitation-page h2::after {
+    content: "♡";
+
+    display: block;
+
+    margin-top: 12px;
+
+    color: var(--color-primary);
+
+    font-size: 1rem;
+}
+
+/* =========================
+   DETALJI DOGAĐAJA
+========================= */
+
+.invitation-page .event-details {
+    padding: 18px 22px;
+
+    background: rgba(232, 183, 189, 0.12);
+
+    border-radius: 14px;
+}
+
+
+.invitation-page .detail:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+
+.invitation-page .detail:first-child {
+    padding-top: 0;
+}
+
+.final-message {
+    position: relative;
+
+    margin-top: 28px;
+
+    color: var(--color-accent);
+
+    font-style: italic;
+}
+
+
+.final-message::before {
+    content: "✦";
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--color-accent);
+
+    font-size: 0.7rem;
+}
+
+/* =========================
+   REVEAL ZAVRŠNE POZIVNICE
+========================= */
+
+#page5.entering .invitation-text {
+    animation: invitationReveal 0.8s ease-out 0.15s both;
+}
+
+#page5.entering .event-details {
+    animation: invitationReveal 0.8s ease-out 0.3s both;
+}
+
+#page5.entering .final-message {
+    animation: invitationReveal 0.8s ease-out 0.5s both;
+}
+
+
+@keyframes invitationReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* =========================
+   DEKORATIVNI ELEMENTI
+========================= */
+
+.page {
+    isolation: isolate;
+}
+
+
+/* Nježna dekoracija u gornjem desnom kutu */
+
+.page:not(.cover-page):not(.invitation-page)::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: 55px;
+    right: 28px;
+
+    color: rgba(201, 164, 92, 0.45);
+
+    font-size: 0.9rem;
+
+    z-index: 0;
+}
+
+
+/* Nježna dekoracija u donjem lijevom kutu */
+
+.page:not(.cover-page):not(.invitation-page) .page-content::before {
+    content: "♡";
+
+    position: absolute;
+
+    bottom: 28px;
+    left: 24px;
+
+    color: rgba(232, 183, 189, 0.55);
+
+    font-size: 1.1rem;
+
+    z-index: -1;
+}
+
+/* =========================
+   AKVARELNE POZADINSKE MRLJE
+========================= */
+
+.page-content::after {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    top: 8%;
+    left: -70px;
+
+    background: rgba(232, 183, 189, 0.22);
+
+    border-radius: 50%;
+
+    z-index: -2;
+
+    box-shadow:
+        285px 500px 0 20px rgba(201, 164, 92, 0.12);
+}
+
+/* STRANICA 2 */
+
+#page2::before {
+    content: "✦";
+    font-size: 1rem;
+}
+
+
+/* STRANICA 3 */
+
+#page3::before {
+    content: "♡";
+    color: rgba(232, 183, 189, 0.65);
+    font-size: 1.2rem;
+}
+
+
+/* STRANICA 4 */
+
+#page4::before {
+    content: "✦";
+    font-size: 1.1rem;
+}
+
+#page2::before,
+#page3::before,
+#page4::before {
+    animation: floatDecoration 4s ease-in-out infinite;
+}
+
+
+@keyframes floatDecoration {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+
+}
+
+.cover-page h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rita-script {
+    font-family: var(--font-special);
+
+    font-size: 1.45em;
+    font-weight: normal;
+
+    line-height: 1;
+
+    color: var(--color-accent);
+}
+
+.cover-title-rest {
+    margin-top: 8px;
+
+    font-size: 0.65em;
+    font-weight: 500;
+
+    letter-spacing: 2px;
+}
+
+/* =========================
+   ANIMACIJA FOTOGRAFIJE
+========================= */
+
+#page2.entering .photo-frame {
+    animation: photoReveal 1.8s ease-out 0.3s both;
+}
+
+
+@keyframes photoReveal {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.82) translateY(15px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.03) translateY(-3px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+#page2.entering .photo-frame + p {
+    animation: textReveal 0.8s ease-out 1.5s both;
+}
+
+
+@keyframes textReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* =========================
+   365 DANA - REVEAL
+========================= */
+
+#page3.entering .days-number {
+    animation: daysReveal 1.5s ease-out 0.2s both;
+}
+
+#page3.entering h2 {
+    animation: daysTextReveal 1s ease-out 1.2s both;
+}
+
+#page3.entering h2 + p {
+    animation: daysTextReveal 1s ease-out 1.8s both;
+}
+
+
+@keyframes daysReveal {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.75);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+@keyframes daysTextReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
